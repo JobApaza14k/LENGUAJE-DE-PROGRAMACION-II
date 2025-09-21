@@ -1,140 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #002244;
-      text-align: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(135deg, #ffffff, #cce6ff, #0066cc);
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #002244;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #ffffff, #cce6ff, #0066cc);
+    }
 
-    /* Barra de herramientas */
-    .toolbar {
-      background: #004080;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .toolbar h2 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-    .toolbar input {
-      color: white;
-    }
-    .toolbar button {
-      background: #0080ff;
-      border: none;
-      padding: 8px 12px;
-      margin-left: 10px;
-      color: white;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    .toolbar button:hover {
-      background: #0059b3;
-    }
+    /* Barra de herramientas */
+    .toolbar {
+      background: #004080;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .toolbar h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .toolbar input {
+      color: white;
+    }
+    .toolbar button {
+      background: #0080ff;
+      border: none;
+      padding: 8px 12px;
+      margin-left: 10px;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .toolbar button:hover {
+      background: #0059b3;
+    }
 
-    /* Contenido principal */
-    .content {
-      margin-top: 100px; /* espacio por la barra */
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
+    /* Contenido principal */
+    .content {
+      margin-top: 100px; /* espacio por la barra */
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    }
-    h2, h3 {
-      font-size: 1.5rem;
-      margin: 10px 0;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
-    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+    h2, h3 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    }
 
-    /* Área de código */
-    #output {
-      background: #f0f0f0;
-      color: #000;
-      text-align: left;
-      padding: 15px;
-      margin-top: 20px;
-      width: 80%;
-      height: 300px;
-      border-radius: 10px;
-      overflow-y: auto;
-      box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
-      font-family: monospace;
-      white-space: pre-wrap;
-    }
-  </style>
+    /* Área de código */
+    #output {
+      background: #f0f0f0;
+      color: #000;
+      text-align: left;
+      padding: 15px;
+      margin-top: 20px;
+      width: 80%;
+      height: 300px;
+      border-radius: 10px;
+      overflow-y: auto;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
-  <!-- Barra de herramientas -->
-  <div class="toolbar">
-    <h2>📂 Portafolio</h2>
-    <div>
-      <input type="file" id="fileInput">
-      <button onclick="mostrarCodigo()">Ver Código</button>
-    </div>
-  </div>
+    <div class="toolbar">
+    <h2>📂 Portafolio</h2>
+    <div>
+      <input type="file" id="fileInput">
+      <button onclick="mostrarCodigo()">Ver Código</button>
+    </div>
+  </div>
 
-  <!-- Contenido -->
-  <div class="content">
-    <h1>LENGUAJE DE PROGRAMACIÓN II</h1>
-    <h2>Dicente: COYLA IDME LEONEL</h2>
-    <h3>JOB EDWARD APAZA CURTIHUANCA</h3>
+    <div class="content">
+    <h1>LENGUAJE DE PROGRAMACIÓN II</h1>
+    <h2>Dicente: COYLA IDME LEONEL</h2>
+    <h3>JOB EDWARD APAZA CURTIHUANCA</h3>
 
-    <!-- Área donde se mostrará el código -->
-    <pre id="output">Aquí se mostrará el contenido de tus archivos...</pre>
+        <pre id="output">Aquí se mostrará el contenido de tus archivos...</pre>
+  </div>
 
-    <!-- FORMULARIO PARA SUBIR ARCHIVOS -->
-    <!-- 🔽 AQUÍ CONFIGURAR EL SERVIDOR (ejemplo: "upload.php") -->
-    <form action="upload.php" method="POST" enctype="multipart/form-data" style="margin-top:20px;">
-      <label for="archivo">Subir archivo:</label>
-      <input type="file" name="archivo" required>
-      <button type="submit">Subir</button>
-    </form>
-  </div>
+  <script>
+    function mostrarCodigo() {
+      const fileInput = document.getElementById('fileInput');
+      const output = document.getElementById('output');
 
-  <script>
-    function mostrarCodigo() {
-      const fileInput = document.getElementById('fileInput');
-      const output = document.getElementById('output');
+      if (fileInput.files.length === 0) {
+        alert("Por favor, selecciona un archivo primero.");
+        return;
+      }
 
-      if (fileInput.files.length === 0) {
-        alert("Por favor, selecciona un archivo primero.");
-        return;
-      }
+      const file = fileInput.files[0];
+      const reader = new FileReader();
 
-      const file = fileInput.files[0];
-      const reader = new FileReader();
+      reader.onload = function(e) {
+        output.textContent = e.target.result;
+      };
 
-      reader.onload = function(e) {
-        output.textContent = e.target.result;
-      };
-
-      reader.readAsText(file);
-    }
-  </script>
+      reader.readAsText(file);
+    }
+  </script>
 </body>
 </html>
