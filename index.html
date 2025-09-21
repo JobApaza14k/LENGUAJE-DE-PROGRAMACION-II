@@ -1,165 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio - Signo Zodiacal</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #002244;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(135deg, #ffffff, #cce6ff, #0066cc);
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #002244;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #ffffff, #cce6ff, #0066cc);
+    }
 
-    /* Barra de herramientas */
-    .toolbar {
-      background: #004080;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .toolbar h2 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-    
-    /* Contenido principal */
-    .content {
-      margin-top: 80px; /* espacio por la barra */
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+    /* Barra de herramientas */
+    .toolbar {
+      background: #004080;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .toolbar h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .toolbar input {
+      color: white;
+    }
+    .toolbar button {
+      background: #0080ff;
+      border: none;
+      padding: 8px 12px;
+      margin-left: 10px;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .toolbar button:hover {
+      background: #0059b3;
+    }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    }
-    h2, h3 {
-      font-size: 1.5rem;
-      margin: 10px 0;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
-    }
+    /* Contenido principal */
+    .content {
+      margin-top: 80px; /* espacio por la barra */
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-    .zodiac-form {
-      background: #f0f0f0;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 400px;
-      width: 100%;
-    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+    h2, h3 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    }
 
-    .zodiac-form input {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    .zodiac-form button {
-      background: #0080ff;
-      border: none;
-      padding: 12px;
-      color: white;
-      font-size: 1.1rem;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-    .zodiac-form button:hover {
-      background: #0059b3;
-    }
-
-    #resultado {
-      font-size: 1.8rem;
-      margin-top: 25px;
-      font-weight: bold;
-      color: #004080;
-    }
-  </style>
+    /* Área de código */
+    #output {
+      background: #f0f0f0;
+      color: #000;
+      text-align: left;
+      padding: 15px;
+      margin-top: 20px;
+      width: 80%;
+      height: 300px;
+      border-radius: 10px;
+      overflow-y: auto;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
-    <div class="toolbar">
-    <h2>📂 Portafolio</h2>
-  </div>
+  <!-- Barra de herramientas -->
+  <div class="toolbar">
+    <h2>📂 Portafolio</h2>
+    <div>
+      <input type="file" id="fileInput">
+      <button onclick="mostrarCodigo()">Ver Código</button>
+    </div>
+  </div>
 
-    <div class="content">
-    <h1>LENGUAJE DE PROGRAMACIÓN II</h1>
-    <h2>Dicente: COYLA IDME LEONEL</h2>
-    <h3>JOB EDWARD APAZA CURTIHUANCA</h3>
+  <!-- Contenido -->
+  <div class="content">
+    <h1>LENGUAJE DE PROGRAMACIÓN II</h1>
+    <h2>Dicente: COYLA IDME LEONEL</h2>
+    <h3>JOB EDWARD APAZA CURTIHUANCA</h3>
 
-    <div class="zodiac-form">
-      <h2>✨ Descubre tu Signo Zodiacal</h2>
-      <input type="number" id="dia" placeholder="Ingresa el día (1-31)" min="1" max="31">
-      <input type="number" id="mes" placeholder="Ingresa el mes (1-12)" min="1" max="12">
-      <button onclick="calcularSigno()">Calcular Signo</button>
-      <p id="resultado"></p>
-    </div>
-  </div>
+    <!-- Área donde se mostrará el código -->
+    <pre id="output">Aquí se mostrará el contenido de tus archivos...</pre>
+  </div>
 
-  <script>
-    function calcularSigno() {
-      const dia = parseInt(document.getElementById('dia').value);
-      const mes = parseInt(document.getElementById('mes').value);
-      const resultado = document.getElementById('resultado');
+  <script>
+    function mostrarCodigo() {
+      const fileInput = document.getElementById('fileInput');
+      const output = document.getElementById('output');
 
-      if (isNaN(dia) || isNaN(mes) || dia < 1 || dia > 31 || mes < 1 || mes > 12) {
-        resultado.textContent = "Por favor, ingresa una fecha válida.";
-        return;
-      }
+      if (fileInput.files.length === 0) {
+        alert("Por favor, selecciona un archivo primero.");
+        return;
+      }
 
-      let signo;
-      if ((mes === 3 && dia >= 21) || (mes === 4 && dia <= 19)) {
-        signo = "ARIES";
-      } else if ((mes === 4 && dia >= 20) || (mes === 5 && dia <= 20)) {
-        signo = "TAURO";
-      } else if ((mes === 5 && dia >= 21) || (mes === 6 && dia <= 20)) {
-        signo = "GÉMINIS";
-      } else if ((mes === 6 && dia >= 21) || (mes === 7 && dia <= 22)) {
-        signo = "CÁNCER";
-      } else if ((mes === 7 && dia >= 23) || (mes === 8 && dia <= 22)) {
-        signo = "LEO";
-      } else if ((mes === 8 && dia >= 23) || (mes === 9 && dia <= 22)) {
-        signo = "VIRGO";
-      } else if ((mes === 9 && dia >= 23) || (mes === 10 && dia <= 22)) {
-        signo = "LIBRA";
-      } else if ((mes === 10 && dia >= 23) || (mes === 11 && dia <= 21)) {
-        signo = "ESCORPIO";
-      } else if ((mes === 11 && dia >= 22) || (mes === 12 && dia <= 21)) {
-        signo = "SAGITARIO";
-      } else if ((mes === 12 && dia >= 22) || (mes === 1 && dia <= 19)) {
-        signo = "CAPRICORNIO";
-      } else if ((mes === 1 && dia >= 20) || (mes === 2 && dia <= 18)) {
-        signo = "ACUARIO";
-      } else if ((mes === 2 && dia >= 19) || (mes === 3 && dia <= 20)) {
-        signo = "PISCIS";
-      } else {
-        signo = "Fecha inválida";
-      }
+      const file = fileInput.files[0];
+      const reader = new FileReader();
 
-      resultado.textContent = `Tu signo zodiacal es: ${signo}`;
-    }
-  </script>
+      reader.onload = function(e) {
+        output.textContent = e.target.result;
+      };
+
+      reader.readAsText(file);
+    }
+  </script>
 </body>
 </html>
