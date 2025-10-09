@@ -1,176 +1,552 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #002244;
-      text-align: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(135deg, #ffffff, #cce6ff, #0066cc);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Lenguaje de Programacion II - Job Edward Apaza Curtihuanca">
+    <title>Portfolio - Lenguaje de Programacion II</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Barra de herramientas */
-    .toolbar {
-      background: #004080;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .toolbar h2 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-    .toolbar input {
-      color: white;
-    }
-    .toolbar button {
-      background: #0080ff;
-      border: none;
-      padding: 8px 12px;
-      margin-left: 10px;
-      color: white;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    .toolbar button:hover {
-      background: #0059b3;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    /* Contenido principal */
-    .content {
-      margin-top: 80px; /* espacio por la barra */
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            border: 1px solid #333;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    }
-    h2, h3 {
-      font-size: 1.5rem;
-      margin: 10px 0;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
-    }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #00d9ff;
+        }
 
-    /* Área de código */
-    #output {
-      background: #f0f0f0;
-      color: #000;
-      text-align: left;
-      padding: 15px;
-      margin-top: 20px;
-      width: 80%;
-      height: 300px;
-      border-radius: 10px;
-      overflow-y: auto;
-      box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
-      font-family: monospace;
-      white-space: pre-wrap;
-    }
-  </style>
+        .course-title {
+            font-size: 2.5em;
+            color: #00d9ff;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #00d9ff;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .info-label {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .info-name {
+            font-size: 1.3em;
+            color: #00d9ff;
+            font-weight: bold;
+        }
+
+        .student-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            grid-column: 1 / -1;
+            padding: 30px;
+            border: 1px solid #00d9ff;
+        }
+
+        .student-card .info-name {
+            font-size: 1.6em;
+            color: #00ff88;
+        }
+
+        .vision-mission-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .vision-card, .mission-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #00d9ff;
+            transition: all 0.3s ease;
+        }
+
+        .vision-card {
+            border-left-color: #ff6b6b;
+        }
+
+        .mission-card {
+            border-left-color: #4ecdc4;
+        }
+
+        .vision-card:hover, .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .vision-title, .mission-title {
+            font-size: 1.5em;
+            color: #00d9ff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .vision-title {
+            color: #ff6b6b;
+        }
+
+        .mission-title {
+            color: #4ecdc4;
+        }
+
+        .vision-text, .mission-text {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-size: 1em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #00d9ff;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            color: #b0b0b0;
+        }
+
+        .tema-section {
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 6px solid #00d9ff;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .tema-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+            border-color: #00d9ff;
+        }
+
+        .tema-title {
+            font-size: 1.8em;
+            color: #00d9ff;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #444;
+            font-weight: bold;
+        }
+
+        .tema-description {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            font-size: 1em;
+            line-height: 1.6;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00d9ff;
+        }
+
+        .trabajos-title {
+            font-size: 1.3em;
+            color: #00ff88;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .lista-trabajos {
+            list-style: none;
+            padding: 0;
+            counter-reset: trabajo-counter;
+        }
+
+        .lista-trabajos li {
+            margin-bottom: 12px;
+            counter-increment: trabajo-counter;
+            position: relative;
+        }
+
+        .lista-trabajos li::before {
+            content: counter(trabajo-counter);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #00d9ff, #0099cc);
+            color: #000;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .lista-trabajos a {
+            display: block;
+            padding: 15px 20px 15px 50px;
+            background: #1a1a1a;
+            color: #00d9ff;
+            text-decoration: none;
+            border-radius: 10px;
+            border-left: 5px solid #00d9ff;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid #333;
+        }
+
+        .lista-trabajos a:hover {
+            background: linear-gradient(135deg, #00d9ff, #0099cc);
+            color: #000;
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.5);
+            border-color: #00d9ff;
+        }
+
+        .color-1 { border-left-color: #ff6b6b; }
+        .color-1 .tema-title { color: #ff6b6b; }
+        .color-1 .tema-description { border-left-color: #ff6b6b; }
+        .color-1 .lista-trabajos li::before { background: linear-gradient(135deg, #ff6b6b, #ee5a6f); }
+        .color-1 .lista-trabajos a { border-left-color: #ff6b6b; color: #ff6b6b; }
+        .color-1 .lista-trabajos a:hover { background: linear-gradient(135deg, #ff6b6b, #ee5a6f); }
+
+        .color-2 { border-left-color: #ffa502; }
+        .color-2 .tema-title { color: #ffa502; }
+        .color-2 .tema-description { border-left-color: #ffa502; }
+        .color-2 .lista-trabajos li::before { background: linear-gradient(135deg, #ffa502, #ff8800); }
+        .color-2 .lista-trabajos a { border-left-color: #ffa502; color: #ffa502; }
+        .color-2 .lista-trabajos a:hover { background: linear-gradient(135deg, #ffa502, #ff8800); }
+
+        .color-3 { border-left-color: #00ff88; }
+        .color-3 .tema-title { color: #00ff88; }
+        .color-3 .tema-description { border-left-color: #00ff88; }
+        .color-3 .lista-trabajos li::before { background: linear-gradient(135deg, #00ff88, #00cc6f); }
+        .color-3 .lista-trabajos a { border-left-color: #00ff88; color: #00ff88; }
+        .color-3 .lista-trabajos a:hover { background: linear-gradient(135deg, #00ff88, #00cc6f); }
+
+        .color-4 { border-left-color: #a855f7; }
+        .color-4 .tema-title { color: #a855f7; }
+        .color-4 .tema-description { border-left-color: #a855f7; }
+        .color-4 .lista-trabajos li::before { background: linear-gradient(135deg, #a855f7, #9333ea); }
+        .color-4 .lista-trabajos a { border-left-color: #a855f7; color: #a855f7; }
+        .color-4 .lista-trabajos a:hover { background: linear-gradient(135deg, #a855f7, #9333ea); }
+
+        .color-5 { border-left-color: #4ecdc4; }
+        .color-5 .tema-title { color: #4ecdc4; }
+        .color-5 .tema-description { border-left-color: #4ecdc4; }
+        .color-5 .lista-trabajos li::before { background: linear-gradient(135deg, #4ecdc4, #3ba99e); }
+        .color-5 .lista-trabajos a { border-left-color: #4ecdc4; color: #4ecdc4; }
+        .color-5 .lista-trabajos a:hover { background: linear-gradient(135deg, #4ecdc4, #3ba99e); }
+
+        .color-6 { border-left-color: #ec407a; }
+        .color-6 .tema-title { color: #ec407a; }
+        .color-6 .tema-description { border-left-color: #ec407a; }
+        .color-6 .lista-trabajos li::before { background: linear-gradient(135deg, #ec407a, #d81b60); }
+        .color-6 .lista-trabajos a { border-left-color: #ec407a; color: #ec407a; }
+        .color-6 .lista-trabajos a:hover { background: linear-gradient(135deg, #ec407a, #d81b60); }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #333;
+            color: #888;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .course-title { font-size: 1.8em; }
+            .info-grid { grid-template-columns: 1fr; }
+            .vision-mission-section { grid-template-columns: 1fr; }
+            .tema-title { font-size: 1.4em; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #00d9ff, #0099cc);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.7);
+        }
+    </style>
 </head>
 <body>
-  <!-- Barra de herramientas -->
-  <div class="toolbar">
-    <h2>📂 Portafolio</h2>
-    <div>
-      <input type="file" id="fileInput">
-      <button onclick="mostrarCodigo()">Ver Código</button>
+    <div class="container">
+        <header>
+            <h1 class="course-title">LENGUAJE DE PROGRAMACION II</h1>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-label">Docente</div>
+                    <div class="info-name">COYLA IDME LEONE</div>
+                </div>
+                
+                <div class="info-card student-card">
+                    <div class="info-label">Estudiante</div>
+                    <div class="info-name">JOB EDWARD APAZA CURTIHUANCA</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="vision-mission-section">
+            <div class="vision-card">
+                <h2 class="vision-title">VISION</h2>
+                <p class="vision-text">
+                    Convertirme en un desarrollador de software de excelencia, especializado en programacion orientada a objetos 
+                    y arquitectura de sistemas. Aspiro a dominar los principios fundamentales de la ingenieria de software y 
+                    aplicarlos en proyectos innovadores que generen impacto positivo en la sociedad, contribuyendo al avance 
+                    tecnologico con soluciones eficientes y escalables.
+                </p>
+            </div>
+
+            <div class="mission-card">
+                <h2 class="mission-title">MISION</h2>
+                <p class="mission-text">
+                    Mi mision es aplicar con dedicacion y rigor los conocimientos adquiridos en Lenguaje de Programacion II, 
+                    desarrollando codigo limpio, eficiente y bien documentado. Comprometerme con el aprendizaje continuo, 
+                    practicando diariamente las estructuras de control, POO y patrones de diseño. Busco colaborar con mis 
+                    compañeros, compartir conocimientos y construir proyectos que reflejen calidad profesional.
+                </p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Temas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalTrabajos">18</div>
+                <div class="stat-label">Trabajos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100</div>
+                <div class="stat-label">Dedicacion</div>
+            </div>
+        </div>
+
+        <div class="tema-section color-1">
+            <h2 class="tema-title">ESTRUCTURA SELECTIVA</h2>
+            <div class="tema-description">
+                Estructuras de control que permiten tomar decisiones en el programa mediante condiciones. 
+                Incluye if, if-else, else-if, switch-case y operador ternario para controlar el flujo de ejecucion.
+            </div>
+            <h3 class="trabajos-title">Trabajos realizados</h3>
+            <ol class="lista-trabajos">
+                <li><a href="https://github.com/tuusuario/proyecto1" target="_blank">Calculadora de Notas con Condicionales</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto2" target="_blank">Sistema de Clasificacion de Edades</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto3" target="_blank">Comparador de Numeros</a></li>
+            </ol>
+        </div>
+
+        <div class="tema-section color-2">
+            <h2 class="tema-title">ESTRUCTURA REPETITIVA</h2>
+            <div class="tema-description">
+                Ciclos o bucles que permiten ejecutar un bloque de codigo multiples veces. 
+                Incluye for, while, do-while y tecnicas de iteracion para procesamiento eficiente de datos.
+            </div>
+            <h3 class="trabajos-title">Trabajos realizados</h3>
+            <ol class="lista-trabajos">
+                <li><a href="https://github.com/tuusuario/proyecto4" target="_blank">Generador de Tablas de Multiplicar</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto5" target="_blank">Calculador de Numeros Primos</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto6" target="_blank">Serie de Fibonacci</a></li>
+            </ol>
+        </div>
+
+        <div class="tema-section color-3">
+            <h2 class="tema-title">ENCAPSULAMIENTO</h2>
+            <div class="tema-description">
+                Principio de POO que oculta los detalles internos de una clase y proporciona una interfaz publica. 
+                Incluye modificadores de acceso (private, public, protected), getters, setters y validacion de datos.
+            </div>
+            <h3 class="trabajos-title">Trabajos realizados</h3>
+            <ol class="lista-trabajos">
+                <li><a href="https://github.com/tuusuario/proyecto7" target="_blank">Clase Estudiante Encapsulada</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto8" target="_blank">Sistema Bancario con Encapsulamiento</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto9" target="_blank">Clase Producto con Validaciones</a></li>
+            </ol>
+        </div>
+
+        <div class="tema-section color-4">
+            <h2 class="tema-title">METODOS Y SOBRECARGAS</h2>
+            <div class="tema-description">
+                Funciones dentro de clases que definen el comportamiento de los objetos. La sobrecarga permite 
+                crear multiples metodos con el mismo nombre pero diferentes parametros (polimorfismo en tiempo de compilacion).
+            </div>
+            <h3 class="trabajos-title">Trabajos realizados</h3>
+            <ol class="lista-trabajos">
+                <li><a href="https://github.com/tuusuario/proyecto10" target="_blank">Calculadora con Metodos Sobrecargados</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto11" target="_blank">Clase Figura con Sobrecarga</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto12" target="_blank">Sistema de Pagos Sobrecargado</a></li>
+            </ol>
+        </div>
+
+        <div class="tema-section color-5">
+            <h2 class="tema-title">CONSTRUCTORES Y DESTRUCTORES</h2>
+            <div class="tema-description">
+                Metodos especiales para inicializar y destruir objetos. Los constructores se ejecutan al crear un objeto, 
+                mientras que los destructores liberan recursos al destruirlo. Incluye constructores por defecto, parametrizados y de copia.
+            </div>
+            <h3 class="trabajos-title">Trabajos realizados</h3>
+            <ol class="lista-trabajos">
+                <li><a href="https://github.com/tuusuario/proyecto13" target="_blank">Clase Vehiculo con Constructores</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto14" target="_blank">Clase Libro con Constructor de Copia</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto15" target="_blank">Gestor de Memoria con Destructores</a></li>
+            </ol>
+        </div>
+
+        <div class="tema-section color-6">
+            <h2 class="tema-title">RELACIONES ENTRE CLASES</h2>
+            <div class="tema-description">
+                Interacciones entre diferentes clases en POO. Incluye asociacion, agregacion, composicion y herencia. 
+                Permite modelar relaciones del mundo real: tiene un, es un, usa, contiene, etc.
+            </div>
+            <h3 class="trabajos-title">Trabajos realizados</h3>
+            <ol class="lista-trabajos">
+                <li><a href="https://github.com/tuusuario/proyecto16" target="_blank">Sistema Universidad (Asociacion)</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto17" target="_blank">Auto y Motor (Composicion)</a></li>
+                <li><a href="https://github.com/tuusuario/proyecto18" target="_blank">Sistema de Empleados (Herencia)</a></li>
+            </ol>
+        </div>
+
+        <footer>
+            <p><strong>2024 - Lenguaje de Programacion II</strong></p>
+            <p>Docente: COYLA IDME LEONE</p>
+            <p>Estudiante: JOB EDWARD APAZA CURTIHUANCA</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                Contacto: job.apaza@universidad.edu.pe
+            </p>
+        </footer>
     </div>
-  </div>
 
-  <!-- Contenido -->
-  <div class="content">
-    <h1>LENGUAJE DE PROGRAMACIÓN II</h1>
-    <h2>Dicente: COYLA IDME LEONEL</h2>
-    <h3>JOB EDWARD APAZA CURTIHUANCA</h3>
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
 
-    <!-- Área donde se mostrará el código -->
-    <pre id="output">Aquí se mostrará el contenido de tus archivos...</pre>
-  </div>
+    <script>
+        function actualizarContador() {
+            var total = document.querySelectorAll('.lista-trabajos li').length;
+            document.getElementById('totalTrabajos').textContent = total;
+        }
 
-  <script>
-    function mostrarCodigo() {
-      const fileInput = document.getElementById('fileInput');
-      const output = document.getElementById('output');
+        window.addEventListener('load', actualizarContador);
 
-      if (fileInput.files.length === 0) {
-        alert("Por favor, selecciona un archivo primero.");
-        return;
-      }
+        window.onscroll = function() {
+            var scrollTop = document.getElementById('scrollTop');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTop.style.display = 'flex';
+            } else {
+                scrollTop.style.display = 'none';
+            }
+        };
 
-      const file = fileInput.files[0];
-      const reader = new FileReader();
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
-      reader.onload = function(e) {
-        output.textContent = e.target.result;
-      };
-
-      reader.readAsText(file);
-    }
-  </script>
-  <script>
-    function calcularSigno() {
-      const dia = parseInt(document.getElementById('dia').value);
-      const mes = parseInt(document.getElementById('mes').value);
-      const resultado = document.getElementById('resultado');
-
-      if (isNaN(dia) || isNaN(mes) || dia < 1 || dia > 31 || mes < 1 || mes > 12) {
-        resultado.textContent = "Por favor, ingresa una fecha válida.";
-        return;
-      }
-
-      let signo;
-      if ((mes === 3 && dia >= 21) || (mes === 4 && dia <= 19)) {
-        signo = "ARIES";
-      } else if ((mes === 4 && dia >= 20) || (mes === 5 && dia <= 20)) {
-        signo = "TAURO";
-      } else if ((mes === 5 && dia >= 21) || (mes === 6 && dia <= 20)) {
-        signo = "GÉMINIS";
-      } else if ((mes === 6 && dia >= 21) || (mes === 7 && dia <= 22)) {
-        signo = "CÁNCER";
-      } else if ((mes === 7 && dia >= 23) || (mes === 8 && dia <= 22)) {
-        signo = "LEO";
-      } else if ((mes === 8 && dia >= 23) || (mes === 9 && dia <= 22)) {
-        signo = "VIRGO";
-      } else if ((mes === 9 && dia >= 23) || (mes === 10 && dia <= 22)) {
-        signo = "LIBRA";
-      } else if ((mes === 10 && dia >= 23) || (mes === 11 && dia <= 21)) {
-        signo = "ESCORPIO";
-      } else if ((mes === 11 && dia >= 22) || (mes === 12 && dia <= 21)) {
-        signo = "SAGITARIO";
-      } else if ((mes === 12 && dia >= 22) || (mes === 1 && dia <= 19)) {
-        signo = "CAPRICORNIO";
-      } else if ((mes === 1 && dia >= 20) || (mes === 2 && dia <= 18)) {
-        signo = "ACUARIO";
-      } else if ((mes === 2 && dia >= 19) || (mes === 3 && dia <= 20)) {
-        signo = "PISCIS";
-      } else {
-        signo = "Fecha inválida";
-      }
-
-      resultado.textContent = `Tu signo zodiacal es: ${signo}`;
-    }
-  </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sections = document.querySelectorAll('.tema-section');
+            sections.forEach(function(section, index) {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                
+                setTimeout(function() {
+                    section.style.transition = 'all 0.6s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+    </script>
 </body>
 </html>
-
