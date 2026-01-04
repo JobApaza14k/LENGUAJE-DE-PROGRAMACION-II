@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUADERNO DE PROGRAMACIÓN ORIENTADA A OBJETOS - LENGUAJE DE PROGRAMACIÓN II</title>
+    <style>
+        /* ESTILOS GENERALES */
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f5e6;
+            margin: 0;
+            padding: 20px;
+            background-image: linear-gradient(to bottom, #f8f5e6 0%, #f0ecda 100%);
+        }
+        
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            padding: 40px;
+            position: relative;
+            border: 1px solid #d4c9a8;
+            background-color: #fffef9;
+        }
+        
+        /* TÍTULOS Y ENCABEZADOS */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px double #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            font-size: 2.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-left: 6px solid #3498db;
+            padding: 10px 0 10px 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            background-color: #f0f8ff;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #bdc3c7;
+        }
+        
+        /* TARJETAS DE TEMAS */
+        .topic-card {
+            background: linear-gradient(to right, #f8f9fa, #ffffff);
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .topic-card:hover {
+            transform: translateX(5px);
+        }
+        
+        /* BOX DE DEFINICIÓN */
+        .definition-box {
+            background-color: #e8f4fc;
+            border: 1px solid #a8d0ff;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+        }
+        
+        /* EJEMPLOS DE CÓDIGO */
+        .example-box {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #34495e;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            font-size: 0.95rem;
+        }
+        
+        .example-title {
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* NOTAS IMPORTANTES */
+        .important-note {
+            background-color: #fffde7;
+            border: 1px solid #ffd54f;
+            padding: 18px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 5px solid #ff9800;
+        }
+        
+        /* TABLAS */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e8f4fc;
+        }
+        
+        /* GRID DE PRINCIPIOS */
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .principle-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            border-top: 4px solid #3498db;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .principle-card:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+        
+        .principle-card h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        /* LISTAS */
+        ul, ol {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
+        li strong {
+            color: #2c3e50;
+        }
+        
+        /* ESPIRAL DEL CUADERNO */
+        .spiral {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to bottom,
+                #c9b07e 0px,
+                #c9b07e 20px,
+                #b8a06b 20px,
+                #b8a06b 40px
+            );
+            border-radius: 5px 0 0 5px;
+        }
+        
+        /* UNIDADES */
+        .unit-title {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 18px 30px;
+            border-radius: 8px;
+            margin-top: 50px;
+            font-size: 1.8rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .unit-title:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #e74c3c);
+        }
+        
+        /* TEORÍA AMPLIADA */
+        .theory-section {
+            background-color: #f9f9f9;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .page-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .principle-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .spiral {
+                display: none;
+            }
+        }
+        
+        /* MEJORAS VISUALES */
+        .key-term {
+            color: #e74c3c;
+            font-weight: bold;
+            background-color: #fff5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        .code-comment {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .practical-exercise {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .practical-exercise h4 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        
+        /* ANIMACIONES SUTILES */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .topic-card, .principle-card, .definition-box {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <!-- Espiral del cuaderno -->
+    <div class="spiral"></div>
+    
+    <!-- Contenido principal -->
+    <div class="content">
+        <h1>📘 CUADERNO DE PROGRAMACIÓN ORIENTADA A OBJETOS<br>
+        <small>Lenguaje de Programación II</small></h1>
+        
+        <!-- PRIMERA UNIDAD -->
+        <div class="unit-title">UNIDAD I: FUNDAMENTOS DE PROGRAMACIÓN ORIENTADA A OBJETOS</div>
+        
+        <!-- TEMA 1: Estructuras Repetitivas -->
+        <div class="topic-card">
+            <h2>1. Estructuras Repetitivas (Ciclos o Bucles)</h2>
+            
+            <div class="definition-box">
+                <strong>Definición:</strong> Son estructuras de control que permiten ejecutar un bloque de código 
+                múltiples veces mientras se cumple una condición específica. Son esenciales para automatizar 
+                tareas repetitivas y procesar colecciones de datos.
+            </div>
+            
+            <h3>Fundamentos Teóricos</h3>
+            <p>Las estructuras repetitivas surgen de la necesidad de evitar la <span class="key-term">duplicación de código</span> 
+            y optimizar procesos que requieren iteración. En la teoría de la computación, los bucles son 
+            implementaciones prácticas de la <span class="key-term">recursión iterativa</span>, permitiendo a los programas 
+            realizar tareas complejas con instrucciones simples.</p>
+            
+            <p>Desde una perspectiva histórica, los ciclos han estado presentes desde los primeros lenguajes 
+            de programación como FORTRAN y COBOL, evolucionando en sintaxis pero manteniendo su propósito 
+            fundamental: <strong>repetir acciones de manera controlada y eficiente</strong>.</p>
+            
+            <h3>Clasificación de Ciclos</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Evaluación</th>
+                        <th>Iteraciones Mínimas</th>
+                        <th>Uso Recomendado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>for</strong></td>
+                        <td>Al inicio de cada iteración</td>
+                        <td>0 (si condición inicial falsa)</td>
+                        <td>Cuando se conoce el número exacto de iteraciones</td>
+                    </tr>
+                    <tr>
+                        <td><strong>while</strong></td>
+                        <td>Al inicio de cada iteración</td>
+                        <td>0 (si condición inicial falsa)</td>
+                        <td>Cuando la condición depende de eventos externos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>do-while</strong></td>
+                        <td>Al final de cada iteración</td>
+                        <td>1 (siempre ejecuta al menos una vez)</td>
+                        <td>Cuando se debe ejecutar al menos una vez</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Ciclo FOR - Análisis Profundo</h3>
+            <p>El ciclo <span class="key-term">for</span> es una estructura de control <strong>pre-test</strong> que combina 
+            inicialización, condición e incremento en una sola línea sintáctica. Su estructura canónica incluye:</p>
+            
+            <div class="example-box">
+                <div class="example-title">Sintaxis General del Ciclo FOR</div>
+                for (inicialización; condición_lógica; expresión_de_incremento) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Bloque de instrucciones a repetir<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;instrucción_1;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;instrucción_2;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// ... más instrucciones<br>
+                }
+            </div>
+            
+            <div class="important-note">
+                <strong>Nota Importante:</strong> Un error común es modificar el contador dentro del cuerpo del ciclo 
+                mientras también se incrementa en la expresión de incremento. Esto puede causar comportamientos 
+                inesperados y bucles infinitos.
+            </div>
+            
+            <h3>Ciclo WHILE - Teoría y Aplicación</h3>
+            <p>El ciclo <span class="key-term">while</span> es fundamental en situaciones donde <strong>no se conoce de antemano</strong> 
+            el número de iteraciones necesarias. Es ampliamente utilizado en:</p>
+            <ul>
+                <li>Procesamiento de flujos de datos (streams)</li>
+                <li>Espera de eventos o condiciones externas</li>
+                <li>Validación de entradas del usuario</li>
+                <li>Implementación de máquinas de estado</li>
+            </ul>
+            
+            <div class="example-box">
+                <div class="example-title">Patrón Común de Validación con WHILE</div>
+                boolean entradaValida = false;<br>
+                while (!entradaValida) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;System.out.print("Ingrese un número positivo: ");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;int numero = scanner.nextInt();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;if (numero > 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entradaValida = true;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Número válido: " + numero);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Error: El número debe ser positivo");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+            
+            <h3>Ciclo DO-WHILE - Características Únicas</h3>
+            <p>A diferencia de <span class="key-term">while</span>, el ciclo <span class="key-term">do-while</span> garantiza 
+            al menos una ejecución del bloque de instrucciones. Esta característica lo hace ideal para:</p>
+            <ul>
+                <li>Menús interactivos que deben mostrarse al menos una vez</li>
+                <li>Procesos que requieren ejecución inicial antes de evaluar condiciones</li>
+                <li>Validación de datos donde se necesita una primera entrada</li>
+            </ul>
+            
+            <h3>Control Avanzado de Ciclos</h3>
+            <p>Las palabras clave <span class="key-term">break</span> y <span class="key-term">continue</span> proporcionan 
+            control granular sobre la ejecución de los ciclos:</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Instrucción</th>
+                        <th>Efecto</th>
+                        <th>Uso Típico</th>
+                        <th>Consideraciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>break</strong></td>
+                        <td>Termina inmediatamente el ciclo</td>
+                        <td>Salir ante condiciones de error o resultados obtenidos</td>
+                        <td>Puede dificultar la legibilidad si se usa en exceso</td>
+                    </tr>
+                    <tr>
+                        <td><strong>continue</strong></td>
+                        <td>Omite el resto de la iteración actual</td>
+                        <td>Saltar elementos específicos en procesamiento</td>
+                        <td>Alternativa: usar estructuras condicionales dentro del ciclo</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="practical-exercise">
+                <h4>Ejercicio Práctico: Análisis de Complejidad</h4>
+                <p><strong>Problema:</strong> Implementar un ciclo que calcule el factorial de un número usando diferentes 
+                estructuras repetitivas y comparar su eficiencia.</p>
+                <p><strong>Solución FOR:</strong> Ideal cuando se conoce el número exacto de multiplicaciones necesarias.</p>
+                <p><strong>Solución WHILE:</strong> Útil si el cálculo debe detenerse ante ciertas condiciones.</p>
+            </div>
+        </div>
+        
+        <!-- TEMA 2: Métodos y Sobrecargas -->
+        <div class="topic-card">
+            <h2>2. Métodos y Sobrecarga de Métodos</h2>
+            
+            <div class="definition-box">
+                <strong>Definición:</strong> Un método es una subrutina o procedimiento asociado a una clase que 
+                realiza una tarea específica. La sobrecarga permite definir múltiples métodos con el mismo 
+                nombre pero diferentes parámetros.
+            </div>
+            
+            <h3>Teoría de Métodos en POO</h3>
+            <p>Los métodos representan el <span class="key-term">comportamiento</span> de los objetos en la Programación 
+            Orientada a Objetos. Desde una perspectiva teórica, cada método debe seguir el principio de 
+            <strong>cohesión funcional</strong>, realizando una única tarea bien definida.</p>
+            
+            <p>En la teoría del diseño de software, los métodos se clasifican en:</p>
+            <ul>
+                <li><strong>Métodos de acceso (getters):</strong> Obtienen el estado del objeto</li>
+                <li><strong>Métodos de modificación (setters):</strong> Cambian el estado del objeto</li>
+                <li><strong>Métodos de servicio:</strong> Realizan operaciones basadas en el estado</li>
+                <li><strong>Métodos de fabricación (factories):</strong> Crean instancias del objeto</li>
+            </ul>
+            
+            <h3>Paradigma de Sobrecarga de Métodos</h3>
+            <p>La sobrecarga es una manifestación del <span class="key-term">polimorfismo estático</span> o 
+            <span class="key-term">polimorfismo de sobrecarga</span>. Permite que una clase ofrezca múltiples 
+            formas de realizar una operación similar, mejorando la <strong>usabilidad de la API</strong>.</p>
+            
+            <div class="example-box">
+                <div class="example-title">Ejemplo Completo de Sobrecarga</div>
+                public class Calculadora {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Suma de dos enteros</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public int sumar(int a, int b) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a + b;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Suma de tres enteros (sobrecarga por número de parámetros)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public int sumar(int a, int b, int c) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a + b + c;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Suma de números decimales (sobrecarga por tipo de parámetros)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double sumar(double a, double b) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a + b;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Suma de un arreglo de enteros</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public int sumar(int[] numeros) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int total = 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int num : numeros) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total += num;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return total;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+            
+            <div class="important-note">
+                <strong>Reglas de Sobrecarga:</strong> La sobrecarga se determina en tiempo de compilación basándose en:
+                1) Número de parámetros, 2) Tipo de parámetros, 3) Orden de parámetros. 
+                <strong>NO</strong> se considera el tipo de retorno para la sobrecarga.
+            </div>
+            
+            <h3>Resolución de Sobrecarga</h3>
+            <p>El compilador sigue un proceso específico para determinar qué método sobrecargado invocar:</p>
+            <ol>
+                <li>Busca métodos con firma exacta</li>
+                <li>Intenta conversiones de tipo promoción (ej: int → long)</li>
+                <li>Intenta conversiones de tipo boxing/unboxing</li>
+                <li>Intenta conversiones varargs</li>
+                <li>Genera error de compilación si hay ambigüedad</li>
+            </ol>
+            
+            <div class="practical-exercise">
+                <h4>Ejercicio: Diseño de una Clase con Sobrecarga</h4>
+                <p><strong>Objetivo:</strong> Diseñar una clase "Geometría" con métodos sobrecargados para calcular áreas:</p>
+                <ul>
+                    <li>area(double radio) → círculo</li>
+                    <li>area(double base, double altura) → rectángulo</li>
+                    <li>area(double base, double altura, String tipo) → triángulo o paralelogramo</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- TEMA 3: Encapsulamiento -->
+        <div class="topic-card">
+            <h2>3. Encapsulamiento en POO</h2>
+            
+            <div class="definition-box">
+                <strong>Definición:</strong> El encapsulamiento es el mecanismo que <strong>oculta los detalles 
+                de implementación</strong> de una clase y <strong>expone solo una interfaz controlada</strong> 
+                para interactuar con sus objetos. Es el primer pilar de la POO.
+            </div>
+            
+            <h3>Fundamentos Teóricos del Encapsulamiento</h3>
+            <p>El concepto de encapsulamiento se originó en la ingeniería de software como respuesta a la 
+            complejidad de los sistemas. David Parnas, en su trabajo seminal de 1972, estableció que 
+            <strong>la información debe ocultarse</strong> para permitir cambios locales sin afectar el sistema global.</p>
+            
+            <p>El encapsulamiento opera en dos niveles:</p>
+            <ul>
+                <li><strong>Encapsulamiento estructural:</strong> Agrupa datos y métodos relacionados</li>
+                <li><strong>Encapsulamiento de información:</strong> Restringe el acceso a los detalles internos</li>
+            </ul>
+            
+            <h3>Modificadores de Acceso - Teoría Profunda</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Modificador</th>
+                        <th>Nivel de Acceso</th>
+                        <th>Principio de Diseño</th>
+                        <th>Impacto en el Acoplamiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>private</strong></td>
+                        <td>Solo dentro de la clase</td>
+                        <td>Máxima encapsulación</td>
+                        <td>Acoplamiento mínimo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>protected</strong></td>
+                        <td>Clase y subclases</td>
+                        <td>Encapsulamiento familiar</td>
+                        <td>Acoplamiento moderado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>default (package)</strong></td>
+                        <td>Clases en el mismo paquete</td>
+                        <td>Encapsulamiento modular</td>
+                        <td>Acoplamiento controlado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>public</strong></td>
+                        <td>Desde cualquier clase</td>
+                        <td>Interfaz pública</td>
+                        <td>Alto acoplamiento</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Patrones de Encapsulamiento</h3>
+            
+            <div class="example-box">
+                <div class="example-title">Patrón Completo de Encapsulamiento con Validación</div>
+                public class CuentaBancaria {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Atributos privados - encapsulados</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private String numeroCuenta;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double saldo;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private String titular;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Constructor con validación</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public CuentaBancaria(String numeroCuenta, String titular, double saldoInicial) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (saldoInicial < 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("El saldo inicial no puede ser negativo");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.numeroCuenta = numeroCuenta;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.titular = titular;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.saldo = saldoInicial;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Métodos de acceso controlado (getters)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double getSaldo() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return saldo;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String getTitular() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return titular;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Métodos de modificación controlada (setters con validación)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void setTitular(String titular) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (titular == null || titular.trim().isEmpty()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("El titular no puede estar vacío");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.titular = titular;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Métodos de servicio que mantienen la integridad del objeto</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void depositar(double monto) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (monto <= 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("El monto a depositar debe ser positivo");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.saldo += monto;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public boolean retirar(double monto) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (monto <= 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("El monto a retirar debe ser positivo");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (monto > saldo) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false; <span class="code-comment">// Fondos insuficientes</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.saldo -= monto;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método toString() para representación controlada</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String toString() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Cuenta: " + numeroCuenta + " | Titular: " + titular + " | Saldo: $" + saldo;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+            
+            <div class="important-note">
+                <strong>Principio de Menor Privilegio:</strong> Siempre comenzar con el modificador de acceso 
+                más restrictivo (<code>private</code>) y solo aumentar la visibilidad cuando sea estrictamente 
+                necesario. Esto minimiza el acoplamiento y maximiza la cohesión.
+            </div>
+            
+            <h3>Beneficios del Encapsulamiento</h3>
+            <div class="principle-grid">
+                <div class="principle-card">
+                    <h4>1. Mantenibilidad</h4>
+                    <p>Los cambios internos no afectan a las clases cliente mientras se mantenga la interfaz pública.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>2. Integridad de Datos</h4>
+                    <p>Validación centralizada evita estados inconsistentes del objeto.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>3. Flexibilidad</h4>
+                    <p>Permite cambiar la implementación sin modificar el contrato público.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>4. Seguridad</h4>
+                    <p>Control de acceso previene modificaciones no autorizadas.</p>
+                </div>
+            </div>
+            
+            <div class="practical-exercise">
+                <h4>Ejercicio: Refactorización para Mejor Encapsulamiento</h4>
+                <p><strong>Contexto:</strong> Dada una clase "Producto" con atributos públicos, refactorizarla aplicando 
+                encapsulamiento:</p>
+                <ul>
+                    <li>Hacer atributos privados</li>
+                    <li>Agregar getters y setters con validación</li>
+                    <li>Implementar invariantes de clase (ej: precio > 0)</li>
+                    <li>Proteger el constructor contra valores inválidos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- TEMA 4: Constructores y Destructores -->
+        <div class="topic-card">
+            <h2>4. Constructores y Destructores</h2>
+            
+            <div class="definition-box">
+                <strong>Definición:</strong> Los <strong>constructores</strong> son métodos especiales que inicializan 
+                objetos recién creados. Los <strong>destructores</strong> (en lenguajes que los soportan) 
+                liberan recursos antes de que el objeto sea eliminado de memoria.
+            </div>
+            
+            <h3>Teoría de los Constructores</h3>
+            <p>Los constructores implementan el concepto de <span class="key-term">inicialización garantizada</span>, 
+            asegurando que ningún objeto exista en un estado inválido. En teoría de tipos, los constructores 
+            son funciones que producen instancias de un tipo a partir de parámetros dados.</p>
+            
+            <p>Desde la perspectiva del ciclo de vida del objeto, los constructores establecen el 
+            <strong>estado inicial coherente</strong> del objeto, cumpliendo con los invariantes de la clase.</p>
+            
+            <h3>Clasificación de Constructores</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Propósito</th>
+                        <th>Sintaxis Clave</th>
+                        <th>Consideraciones de Diseño</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Constructor por defecto</strong></td>
+                        <td>Inicialización con valores predeterminados</td>
+                        <td>Clase() { ... }</td>
+                        <td>Útil para frameworks que requieren instanciación sin parámetros</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Constructor parametrizado</strong></td>
+                        <td>Inicialización con valores específicos</td>
+                        <td>Clase(T1 p1, T2 p2) { ... }</td>
+                        <td>Permite crear objetos en estado válido desde el inicio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Constructor copia</strong></td>
+                        <td>Crear copia independiente de un objeto existente</td>
+                        <td>Clase(Clase original) { ... }</td>
+                        <td>Evita problemas de aliasing; implementa copia profunda</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Constructor privado</strong></td>
+                        <td>Controlar instanciación (Singleton, Factory)</td>
+                        <td>private Clase() { ... }</td>
+                        <td>Patrones de diseño que restringen la creación de objetos</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <div class="example-title">Sistema Completo de Constructores</div>
+                public class Libro {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private String isbn;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private String titulo;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private String autor;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private int paginas;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double precio;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Constructor por defecto (solo si es necesario)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Libro() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.isbn = "000-0000000000";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.titulo = "Sin título";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.autor = "Anónimo";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.paginas = 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.precio = 0.0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Constructor parametrizado principal</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Libro(String isbn, String titulo, String autor, int paginas, double precio) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setIsbn(isbn);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTitulo(titulo);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setAutor(autor);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setPaginas(paginas);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setPrecio(precio);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Constructor de copia (copia profunda)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Libro(Libro original) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (original == null) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("El libro original no puede ser nulo");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.isbn = original.isbn;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.titulo = original.titulo;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.autor = original.autor;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.paginas = original.paginas;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.precio = original.precio;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Métodos de validación y setters...</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private void setIsbn(String isbn) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Validación de formato ISBN</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!isbn.matches("\\d{3}-\\d{10}")) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("Formato ISBN inválido");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.isbn = isbn;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Otros métodos...</span><br>
+                }
+            </div>
+            
+            <h3>Teoría de los Destructores</h3>
+            <p>En Java, el concepto de destructor explícito no existe debido al <span class="key-term">Garbage Collector</span> 
+            (Recolector de Basura). Sin embargo, el patrón <strong>finalize()</strong> (ahora deprecado) y 
+            <strong>AutoCloseable</strong> permiten gestionar recursos no gestionados por la JVM.</p>
+            
+            <div class="important-note">
+                <strong>Advertencia sobre finalize():</strong> Desde Java 9, el método <code>finalize()</code> 
+                está deprecado porque su ejecución no es determinista. Para liberación de recursos, usar 
+                <code>AutoCloseable</code> con <code>try-with-resources</code>.
+            </div>
+            
+            <div class="example-box">
+                <div class="example-title">Gestión Moderna de Recursos (Java)</div>
+                public class Archivo implements AutoCloseable {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private FileInputStream stream;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Archivo(String ruta) throws FileNotFoundException {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.stream = new FileInputStream(ruta);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void leer() throws IOException {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Operaciones de lectura...</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int dato = stream.read();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void close() throws IOException {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (stream != null) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stream.close();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Recurso del archivo liberado");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Uso con try-with-resources</span><br>
+                try (Archivo archivo = new Archivo("datos.txt")) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;archivo.leer();<br>
+                } catch (IOException e) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br>
+                } <span class="code-comment">// El archivo se cierra automáticamente aquí</span>
+            </div>
+            
+            <h3>Principios de Diseño de Constructores</h3>
+            <div class="principle-grid">
+                <div class="principle-card">
+                    <h4>1. Inicialización Completa</h4>
+                    <p>Los objetos deben crearse en estado válido y listos para usar.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>2. Validación Temprana</h4>
+                    <p>Validar parámetros en el constructor, no después.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>3. Sobrecarga Inteligente</h4>
+                    <p>Proveer constructores para casos de uso comunes.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>4. Inmutabilidad</h4>
+                    <p>Considerar clases inmutables cuando sea posible.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEGUNDA UNIDAD -->
+        <div class="unit-title" style="margin-top: 60px;">UNIDAD II: CONCEPTOS AVANZADOS DE POO</div>
+        
+        <!-- TEMA 5: Herencia -->
+        <div class="topic-card">
+            <h2>5. Herencia en Programación Orientada a Objetos</h2>
+            
+            <div class="definition-box">
+                <strong>Definición:</strong> La herencia es un mecanismo que permite crear nuevas clases 
+                (<strong>clases derivadas o subclases</strong>) a partir de clases existentes 
+                (<strong>clases base o superclases</strong>), reutilizando y extendiendo su funcionalidad.
+            </div>
+            
+            <h3>Fundamentos Teóricos de la Herencia</h3>
+            <p>La herencia modela la relación <span class="key-term">"es-un"</span> (is-a) entre clases. 
+            Desde una perspectiva teórica, implementa el principio de <strong>sustitución de Liskov</strong> 
+            (LSP), donde los objetos de la subclase deben poder reemplazar a los de la superclase sin 
+            alterar la corrección del programa.</p>
+            
+            <p>En la taxonomía de la POO, la herencia permite:</p>
+            <ul>
+                <li><strong>Reutilización de código:</strong> Evitar duplicación mediante herencia de implementación</li>
+                <li><strong>Extensibilidad:</strong> Añadir nuevas funcionalidades sin modificar código existente</li>
+                <li><strong>Polimorfismo:</strong> Tratar objetos de subclases como instancias de la superclase</li>
+                <li><strong>Organización jerárquica:</strong> Estructurar clases en taxonomías lógicas</li>
+            </ul>
+            
+            <h3>Tipología de Herencia</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Soporte en Java</th>
+                        <th>Consideraciones de Diseño</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Herencia Simple</strong></td>
+                        <td>Una clase hereda de una sola superclase</td>
+                        <td>Sí (extensión única)</td>
+                        <td>Evita ambigüedades de la herencia múltiple</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Herencia Multinivel</strong></td>
+                        <td>Cadena de herencia (A → B → C)</td>
+                        <td>Sí</td>
+                        <td>Puede crear jerarquías profundas difíciles de mantener</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Herencia Jerárquica</strong></td>
+                        <td>Múltiples clases heredan de una misma superclase</td>
+                        <td>Sí</td>
+                        <td>Comparte comportamiento común entre clases hermanas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Herencia Híbrida</strong></td>
+                        <td>Combinación de varios tipos de herencia</td>
+                        <td>Sí (a través de interfaces)</td>
+                        <td>Complejidad que requiere diseño cuidadoso</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <div class="example-title">Sistema de Herencia Completo - Jerarquía de Empleados</div>
+                <span class="code-comment">// Clase base abstracta (no se puede instanciar directamente)</span><br>
+                public abstract class Empleado {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;protected String nombre;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;protected String id;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;protected double salarioBase;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Empleado(String nombre, String id, double salarioBase) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.nombre = nombre;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.id = id;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.salarioBase = salarioBase;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método concreto (implementación compartida)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String getInformacionBasica() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "ID: " + id + " | Nombre: " + nombre;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método abstracto (debe ser implementado por subclases)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public abstract double calcularSalario();<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método hook (implementación opcional para subclases)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String getTipoEmpleado() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Empleado Genérico";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Primera subclase concreta</span><br>
+                public class EmpleadoTiempoCompleto extends Empleado {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double bonoAnual;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public EmpleadoTiempoCompleto(String nombre, String id, double salarioBase, double bonoAnual) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(nombre, id, salarioBase); <span class="code-comment">// Llamada al constructor de la superclase</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.bonoAnual = bonoAnual;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Implementación del método abstracto</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularSalario() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return salarioBase + (bonoAnual / 12); <span class="code-comment">// Salario mensual</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Sobrescritura de método hook</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String getTipoEmpleado() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Empleado de Tiempo Completo";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método específico de la subclase</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double getBonoAnual() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return bonoAnual;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Segunda subclase concreta (herencia jerárquica)</span><br>
+                public class EmpleadoPorHoras extends Empleado {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private int horasTrabajadas;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double tarifaPorHora;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public EmpleadoPorHoras(String nombre, String id, double tarifaPorHora, int horasTrabajadas) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(nombre, id, 0); <span class="code-comment">// Salario base cero para este tipo</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.tarifaPorHora = tarifaPorHora;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.horasTrabajadas = horasTrabajadas;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularSalario() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double salario = horasTrabajadas * tarifaPorHora;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Horas extras (más del 40% de horas estándar)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (horasTrabajadas > 160) { <span class="code-comment">// 40 horas × 4 semanas</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int horasExtras = horasTrabajadas - 160;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salario += horasExtras * tarifaPorHora * 0.5; <span class="code-comment">// 50% extra</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return salario;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String getTipoEmpleado() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Empleado por Horas";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método específico para actualizar horas</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void agregarHoras(int horasAdicionales) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (horasAdicionales < 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("Las horas no pueden ser negativas");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.horasTrabajadas += horasAdicionales;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Subclase de EmpleadoTiempoCompleto (herencia multinivel)</span><br>
+                public class Gerente extends EmpleadoTiempoCompleto {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private String departamento;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double presupuesto;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Gerente(String nombre, String id, double salarioBase, double bonoAnual, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String departamento, double presupuesto) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(nombre, id, salarioBase, bonoAnual);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.departamento = departamento;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.presupuesto = presupuesto;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Extensión del cálculo de salario</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularSalario() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double salarioBaseCalculado = super.calcularSalario(); <span class="code-comment">// Reutilizar lógica de superclase</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return salarioBaseCalculado + (presupuesto * 0.01); <span class="code-comment">// 1% del presupuesto como bono</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String getTipoEmpleado() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Gerente de " + departamento;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método específico de gerente</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void aprobarGasto(double monto) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (monto > presupuesto) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw new IllegalArgumentException("Monto excede el presupuesto disponible");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;presupuesto -= monto;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Gasto de $" + monto + " aprobado. Presupuesto restante: $" + presupuesto);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+            
+            <div class="important-note">
+                <strong>Principio de Sustitución de Liskov (LSP):</strong> Las subclases deben ser sustituibles 
+                por sus clases base sin alterar la corrección del programa. Esto significa que los objetos 
+                de la subclase deben cumplir con el contrato establecido por la superclase.
+            </div>
+            
+            <h3>Palabras Clave en Herencia</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Palabra</th>
+                        <th>Uso</th>
+                        <th>Ejemplo</th>
+                        <th>Notas Importantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>extends</strong></td>
+                        <td>Establece relación de herencia</td>
+                        <td>class B extends A</td>
+                        <td>Java solo permite extends de una clase</td>
+                    </tr>
+                    <tr>
+                        <td><strong>super</strong></td>
+                        <td>Referencia a la superclase</td>
+                        <td>super.metodo()</td>
+                        <td>Útil para evitar sobrescritura accidental</td>
+                    </tr>
+                    <tr>
+                        <td><strong>@Override</strong></td>
+                        <td>Anotación para sobrescritura</td>
+                        <td>@Override public void metodo()</td>
+                        <td>Ayuda al compilador a detectar errores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>final</strong></td>
+                        <td>Impide herencia o sobrescritura</td>
+                        <td>final class A</td>
+                        <td>Útil para clases de utilidad o inmutables</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Principios de Diseño con Herencia</h3>
+            <div class="principle-grid">
+                <div class="principle-card">
+                    <h4>1. Favor Composición sobre Herencia</h4>
+                    <p>Usar composición cuando la relación no es estrictamente "es-un".</p>
+                </div>
+                <div class="principle-card">
+                    <h4>2. Mantener Jerarquías Planas</h4>
+                    <p>Evitar profundidades mayores a 3-4 niveles.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>3. Diseñar para Extensión</h4>
+                    <p>Marcar métodos como protected cuando se espera sobrescritura.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>4. Documentar Contratos</h4>
+                    <p>Documentar claramente qué deben implementar las subclases.</p>
+                </div>
+            </div>
+            
+            <h3>Problemas Comunes y Soluciones</h3>
+            <ul>
+                <li><strong>Fragilidad de la herencia:</strong> Cambios en superclases afectan subclases → Usar clases finales para estabilidad</li>
+                <li><strong>Herencia inapropiada:</strong> Usar herencia para reutilización sin relación "es-un" → Preferir composición</li>
+                <li><strong>Jerarquías profundas:</strong> Dificultan mantenimiento → Aplanar jerarquías o usar interfaces</li>
+                <li><strong>Clases base demasiado grandes:</strong> Violan SRP → Dividir en clases más pequeñas y específicas</li>
+            </ul>
+            
+            <div class="practical-exercise">
+                <h4>Ejercicio: Diseño de Jerarquía de Vehículos</h4>
+                <p><strong>Objetivo:</strong> Diseñar una jerarquía de clases para diferentes tipos de vehículos:</p>
+                <ol>
+                    <li>Clase base <strong>Vehiculo</strong> con atributos comunes (marca, modelo, año)</li>
+                    <li>Subclases <strong>Automovil</strong>, <strong>Motocicleta</strong>, <strong>Camion</strong></li>
+                    <li>Métodos abstractos como <strong>calcularImpuesto()</strong> y <strong>obtenerTipo()</strong></li>
+                    <li>Considerar jerarquía adicional para tipos específicos de automóviles</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- TEMA 6: Polimorfismo -->
+        <div class="topic-card">
+            <h2>6. Polimorfismo en Programación Orientada a Objetos</h2>
+            
+            <div class="definition-box">
+                <strong>Definición:</strong> El polimorfismo (del griego "muchas formas") es la capacidad de 
+                objetos de diferentes clases de responder al mismo mensaje (llamada a método) de maneras 
+                específicas a cada clase. Es el tercer pilar fundamental de la POO.
+            </div>
+            
+            <h3>Fundamentos Teóricos del Polimorfismo</h3>
+            <p>El polimorfismo implementa el principio de <span class="key-term">abstracción comportamental</span>, 
+            permitiendo tratar objetos de tipos diferentes de manera uniforme a través de una interfaz común. 
+            Desde la teoría de tipos, el polimorfismo permite que una variable pueda referenciar objetos de 
+            múltiples tipos relacionados.</p>
+            
+            <p>En la evolución de los lenguajes de programación, el polimorfismo surgió como respuesta 
+            a la necesidad de escribir código más genérico y reutilizable, reduciendo el acoplamiento 
+            y aumentando la flexibilidad del sistema.</p>
+            
+            <h3>Clasificación del Polimorfismo</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Mecanismo</th>
+                        <th>Resolución</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Polimorfismo de Sobrecarga (Ad-hoc)</strong></td>
+                        <td>Múltiples métodos mismo nombre, diferentes parámetros</td>
+                        <td>Tiempo de compilación</td>
+                        <td>sumar(int, int) vs sumar(double, double)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polimorfismo de Sobrescritura (Inclusión)</strong></td>
+                        <td>Reimplementación de métodos heredados</td>
+                        <td>Tiempo de ejecución (dynamic dispatch)</td>
+                        <td>@Override en clases derivadas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polimorfismo Paramétrico (Genéricos)</strong></td>
+                        <td>Tipos como parámetros</td>
+                        <td>Tiempo de compilación</td>
+                        <td>List&lt;T&gt;, donde T puede ser cualquier tipo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polimorfismo de Coerción (Conversión)</strong></td>
+                        <td>Conversión automática de tipos</td>
+                        <td>Tiempo de compilación/ejecución</td>
+                        <td>int → double, Integer → int (unboxing)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Polimorfismo de Sobrescritura - Mecanismo Detallado</h3>
+            <p>El polimorfismo por sobrescritura se implementa mediante <span class="key-term">enlace dinámico</span> 
+            (dynamic binding). La JVM utiliza tablas de métodos virtuales (v-tables) para determinar 
+            qué implementación ejecutar en tiempo de ejecución.</p>
+            
+            <div class="example-box">
+                <div class="example-title">Sistema Polimórfico Completo - Formas Geométricas</div>
+                <span class="code-comment">// Interfaz común para todas las formas</span><br>
+                public interface Forma {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;double calcularArea();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;double calcularPerimetro();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;String obtenerNombre();<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Implementación concreta 1</span><br>
+                public class Circulo implements Forma {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double radio;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Circulo(double radio) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.radio = radio;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularArea() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Math.PI * radio * radio;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularPerimetro() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 2 * Math.PI * radio;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String obtenerNombre() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Círculo";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método específico de círculo</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double getDiametro() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 2 * radio;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Implementación concreta 2</span><br>
+                public class Rectangulo implements Forma {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double ancho;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double alto;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Rectangulo(double ancho, double alto) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.ancho = ancho;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.alto = alto;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularArea() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ancho * alto;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularPerimetro() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 2 * (ancho + alto);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String obtenerNombre() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Rectángulo";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método específico de rectángulo</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public boolean esCuadrado() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ancho == alto;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Implementación concreta 3</span><br>
+                public class Triangulo implements Forma {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double base;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double altura;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;private double lado1, lado2, lado3;<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public Triangulo(double base, double altura, double lado1, double lado2, double lado3) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.base = base;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.altura = altura;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.lado1 = lado1;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.lado2 = lado2;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.lado3 = lado3;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularArea() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (base * altura) / 2;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public double calcularPerimetro() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return lado1 + lado2 + lado3;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String obtenerNombre() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Triángulo";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método específico para clasificación</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public String getTipoTriangulo() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (lado1 == lado2 && lado2 == lado3) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Equilátero";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Isósceles";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Escaleno";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Clase que demuestra polimorfismo en acción</span><br>
+                public class ProcesadorFormas {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método polimórfico: acepta cualquier objeto que implemente Forma</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void procesarForma(Forma forma) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Procesando: " + forma.obtenerNombre());<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Área: " + forma.calcularArea());<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Perímetro: " + forma.calcularPerimetro());<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("---");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método que trabaja con colección de formas (polimorfismo + genéricos)</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void procesarTodas(List&lt;Forma&gt; formas) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("=== PROCESANDO " + formas.size() + " FORMAS ===");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (Forma forma : formas) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procesarForma(forma);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Método que demuestra downcasting seguro</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public void analizarFormaEspecifica(Forma forma) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Usar instanceof para verificar tipo concreto</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (forma instanceof Circulo) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Circulo circulo = (Circulo) forma; <span class="code-comment">// Downcast seguro</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Diámetro del círculo: " + circulo.getDiametro());<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if (forma instanceof Rectangulo) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rectangulo rect = (Rectangulo) forma;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (rect.esCuadrado()) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("¡Es un cuadrado!");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br>
+                <br>
+                <span class="code-comment">// Clase principal que demuestra el uso polimórfico</span><br>
+                public class Main {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProcesadorFormas procesador = new ProcesadorFormas();<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Crear formas de diferentes tipos</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Forma circulo = new Circulo(5.0);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Forma rectangulo = new Rectangulo(4.0, 6.0);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Forma triangulo = new Triangulo(3.0, 4.0, 3.0, 4.0, 5.0);<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Usar polimorfismo: mismo método, diferentes comportamientos</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procesador.procesarForma(circulo);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procesador.procesarForma(rectangulo);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procesador.procesarForma(triangulo);<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Usar colección polimórfica</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;Forma&gt; formas = Arrays.asList(circulo, rectangulo, triangulo);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procesador.procesarTodas(formas);<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// Demostrar downcasting seguro</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procesador.analizarFormaEspecifica(circulo);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;procesador.analizarFormaEspecifica(rectangulo);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+            
+            <div class="important-note">
+                <strong>Binding (Enlace):</strong> El polimorfismo de sobrescritura utiliza <strong>enlace dinámico</strong> 
+                (runtime binding), donde la decisión sobre qué método ejecutar se toma en tiempo de ejecución 
+                basándose en el tipo real del objeto. Esto contrasta con el <strong>enlace estático</strong> 
+                (compile-time binding) usado en la sobrecarga.
+            </div>
+            
+            <h3>Mecanismos de Implementación del Polimorfismo</h3>
+            
+            <h4>Tabla de Métodos Virtuales (v-table)</h4>
+            <p>En lenguajes como Java y C++, el polimorfismo se implementa mediante tablas de métodos virtuales:</p>
+            <ul>
+                <li>Cada clase con métodos virtuales tiene una v-table</li>
+                <li>La v-table contiene punteros a las implementaciones reales de los métodos</li>
+                <li>Cada objeto contiene un puntero oculto a la v-table de su clase</li>
+                <li>Las llamadas a métodos se resuelven indirectamente a través de esta tabla</li>
+            </ul>
+            
+            <h4>Dynamic Method Dispatch en Java</h4>
+            <p>Java utiliza un mecanismo de despacho dinámico que sigue estos pasos:</p>
+            <ol>
+                <li>El compilador verifica que el método existe en el tipo declarado</li>
+                <li>Genera código para buscar el método en la v-table del objeto</li>
+                <li>En tiempo de ejecución, la JVM sigue el puntero a la v-table</li>
+                <li>Ejecuta la implementación correspondiente al tipo real del objeto</li>
+            </ol>
+            
+            <h3>Ventajas del Polimorfismo</h3>
+            <div class="principle-grid">
+                <div class="principle-card">
+                    <h4>1. Extensibilidad</h4>
+                    <p>Nuevas clases pueden añadirse sin modificar código existente.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>2. Mantenibilidad</h4>
+                    <p>Cambios en implementaciones no afectan código cliente.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>3. Reusabilidad</h4>
+                    <p>Código genérico puede trabajar con múltiples tipos.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>4. Abstracción</h4>
+                    <p>El código cliente se enfoca en interfaces, no implementaciones.</p>
+                </div>
+            </div>
+            
+            <h3>Patrones de Diseño Basados en Polimorfismo</h3>
+            <ul>
+                <li><strong>Strategy Pattern:</strong> Intercambia algoritmos en tiempo de ejecución</li>
+                <li><strong>Factory Method:</strong> Delega creación de objetos a subclases</li>
+                <li><strong>Template Method:</strong> Define esqueleto de algoritmo con pasos variables</li>
+                <li><strong>Observer Pattern:</strong> Notifica cambios a múltiples objetos de diferentes tipos</li>
+            </ul>
+            
+            <div class="practical-exercise">
+                <h4>Ejercicio: Sistema de Notificaciones Polimórfico</h4>
+                <p><strong>Objetivo:</strong> Implementar un sistema de notificaciones que pueda enviar mensajes 
+                a través de diferentes canales (email, SMS, push notification) usando polimorfismo.</p>
+                <ol>
+                    <li>Crear interfaz <strong>Notificador</strong> con método <code>enviar(String mensaje)</code></li>
+                    <li>Implementar clases concretas: <strong>EmailNotificador</strong>, <strong>SMSNotificador</strong>, <strong>PushNotificador</strong></li>
+                    <li>Crear clase <strong>SistemaNotificaciones</strong> que acepte cualquier Notificador</li>
+                    <li>Demostrar polimorfismo cambiando el notificador en tiempo de ejecución</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- Nota final -->
+        <div class="important-note" style="margin-top: 50px; text-align: center;">
+            <strong>Continuará en la siguiente página...</strong><br>
+            Los siguientes temas (Clases Abstractas, Interfaces, Manejo de Excepciones, 
+            Programación Genérica y Principios SOLID) serán cubiertos en la continuación 
+            de este cuaderno de Programación Orientada a Objetos.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
